@@ -1,4 +1,5 @@
 
+# kommentaar
 Re.cu <- function (u,X){
   uX <- X%*%u 
   N <- length(X)
