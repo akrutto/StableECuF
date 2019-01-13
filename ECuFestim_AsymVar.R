@@ -1,3 +1,5 @@
+#library(stable)
+#library(stabledist)
 a=1.5
 b=0.5
 n=1000
