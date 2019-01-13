@@ -1,5 +1,6 @@
 #library(stable)
 #library(stabledist)
+#For alpha only
 a=1.5
 b=0.5
 n=1000
