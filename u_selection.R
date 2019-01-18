@@ -1,4 +1,21 @@
 #Selection of u1 u2
+#cumulant function (pm=0, M) 
+cu.f0.neq.1 <- function(u) {(complex(
+  real=-(g*abs(u))^a,
+  imaginary=-((g*abs(u))^a)*b*tan(a*pi/2)*sign(u)*((g*abs(u))^(1-a)-1)+d*u #abs((u+10^(-25)))^(1-a)
+))}
+cu.f0.eq.1 <- function(u) {(complex(
+  real=-(g*abs(u)),
+  imaginary=u*(-b*g*(2/pi)*log(g*abs(u))+d)
+))}
+cu.f0. <- function(u) {if(a==1) {cu.f0.eq.1(u)} else {cu.f0.neq.1(u)}}
+cu.f0.mod <- function(u) {if(a==1) {Mod(cu.f0.eq.1(u))} else {Mod(cu.f0.neq.1(u))}}
+cu.f0.real <- function(u) {if(a==1) {Re(cu.f0.eq.1(u))} else {Re(cu.f0.neq.1(u))}}
+cu.f0.im <- function(u) {if(a==1) {Im(cu.f0.eq.1(u))} else {Im(cu.f0.neq.1(u))}}
+
+
+#selection
+Ipsi <- cu.f0.im
 Rpsi <- cu.f0.real
 Ipsi <- cu.f0.im
 Rpsi(-0.5)
@@ -8,7 +25,7 @@ b=1
 d=0 
 g=1
 n=2000
-# u väärtused graafikule üle mõlema
+# u vÃ¤Ã¤rtused graafikule Ã¼le mÃµlema
 u <- c(seq(0, 1/10^8, by=1/10^10),seq(1/10^8, 1/10^6,by=1/10^8),seq(1/10^6,1/10^4,by=1/10^6),seq(1/10^4,1/10^2,by=1/10^4) ,seq(1/10^2,1.7,by=1/10^2))#,seq(1/10^2,0.1,by=1/10^3) 
 u=c(-u,u)
 
@@ -18,7 +35,7 @@ r=0
 v=0
 Y18=rstable(n, alpha=a,beta=b, gamma=g, delta=d,param=0)
 Y=Y18
-#u18 <- seq(0, 2, by=1/100) #a=1.8 väärtused
+#u18 <- seq(0, 2, by=1/100) #a=1.8 vÃ¤Ã¤rtused
 for (i in 1:length(u)){# empirical  cumulant function real and imaginary part for resampled data
   k <- sum(cos(u[i]*Y))	
   s <- sum(sin(u[i]*Y))    
@@ -30,7 +47,7 @@ r18=r
 a=0.2
 r=0
 v=0
-#u02=seq(-0.0002,0.007,by=0.00001) #a=0.2 väärtused
+#u02=seq(-0.0002,0.007,by=0.00001) #a=0.2 vÃ¤Ã¤rtused
 Y02=rstable(n,alpha=a,beta=b, gamma=g, delta=d,param=0)
 Y=Y02
 for (i in 1:length(u)){# empirical  cumulant function real and imaginary part for resampled data
